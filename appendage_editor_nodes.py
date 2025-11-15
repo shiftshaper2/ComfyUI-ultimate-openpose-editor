@@ -256,6 +256,14 @@ class AppendageEditorNode:
 
         person['pose_keypoints_2d'] = new_keypoints
 
+        # If editing head, also rotate the face keypoints
+        if appendage_type == "head" and 'face_keypoints_2d' in person and person['face_keypoints_2d']:
+            face_keypoints = person['face_keypoints_2d']
+            new_face_keypoints = self._apply_transformations(
+                face_keypoints, scale_factor, x_offset, y_offset, rotation, pivot, bidirectional_scale
+            )
+            person['face_keypoints_2d'] = new_face_keypoints
+
     def _get_appendage_indices(self, appendage_type):
         """Get OpenPose keypoint indices for specific appendages and their pivot points."""
         # COCO 18-keypoint format (0-based) used by ComfyUI ControlNet Aux OpenPose Pose node:

@@ -5,6 +5,7 @@ from .pose_filter_nodes import (
     PoseKeypointFilterNode,
     PoseKeypointMoverNode,
 )
+from .pose_merge_node import PoseMergeNode
 
 
 WEB_DIRECTORY = "js"
@@ -15,6 +16,7 @@ NODE_CLASS_MAPPINGS = {
     "PoseKeypointSelector": PoseKeypointSelectorNode,
     "PoseKeypointFilter": PoseKeypointFilterNode,
     "PoseKeypointMover": PoseKeypointMoverNode,
+    "PoseMerge": PoseMergeNode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -23,6 +25,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "PoseKeypointSelector": "Pose Keypoint Selector",
     "PoseKeypointFilter": "Pose Keypoint Filter",
     "PoseKeypointMover": "Pose Keypoint Mover",
+    "PoseMerge": "Pose Merge",
 }
 
 __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS", "WEB_DIRECTORY"]
