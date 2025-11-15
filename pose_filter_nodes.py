@@ -237,10 +237,10 @@ class PoseKeypointMoverNode:
         return {
             "required": {
                 "POSE_KEYPOINT": ("POSE_KEYPOINT",),
-                "x_offset": ("FLOAT", {"default": 0.0, "min": -10000.0, "max": 10000.0, "step": 0.01,
-                                      "tooltip": "X offset (can be list for animation)"}),
-                "y_offset": ("FLOAT", {"default": 0.0, "min": -10000.0, "max": 10000.0, "step": 0.01,
-                                      "tooltip": "Y offset (can be list for animation)"}),
+                "x_offset": ("FLOAT", {"default": 0.0, "min": -10000.0, "max": 10000.0, "step": 1.0,
+                                      "tooltip": "X offset in pixels (can be list for animation)"}),
+                "y_offset": ("FLOAT", {"default": 0.0, "min": -10000.0, "max": 10000.0, "step": 1.0,
+                                      "tooltip": "Y offset in pixels (can be list for animation)"}),
             },
             "optional": {
                 "POSE_SELECTION": ("POSE_SELECTION", {"tooltip": "Selection from PoseKeypointSelector (takes priority)"}),
