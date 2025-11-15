@@ -7,6 +7,7 @@ from .pose_filter_nodes import (
 )
 from .pose_merge_node import PoseMergeNode
 from .pose_attach_node import PoseAttachNode
+from .pose_temporal_smoothing_node import PoseTemporalSmoothingNode
 
 
 WEB_DIRECTORY = "js"
@@ -19,6 +20,7 @@ NODE_CLASS_MAPPINGS = {
     "PoseKeypointMover": PoseKeypointMoverNode,
     "PoseMerge": PoseMergeNode,
     "PoseAttach": PoseAttachNode,
+    "PoseTemporalSmoothing": PoseTemporalSmoothingNode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -29,6 +31,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "PoseKeypointMover": "Pose Keypoint Mover",
     "PoseMerge": "Pose Merge",
     "PoseAttach": "Pose Attach",
+    "PoseTemporalSmoothing": "Pose Temporal Smoothing",
 }
 
 __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS", "WEB_DIRECTORY"]
