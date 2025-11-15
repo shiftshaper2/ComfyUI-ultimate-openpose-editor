@@ -198,6 +198,9 @@ class PoseKeypointFilterNode:
         Returns:
             Modified keypoints array
         """
+        if keypoints is None:
+            return None
+
         filtered = keypoints.copy()
         for i in range(0, len(filtered), 3):
             keypoint_idx = i // 3
@@ -213,6 +216,9 @@ class PoseKeypointFilterNode:
 
     def _zero_all_keypoints(self, keypoints):
         """Zero out confidence for all keypoints in array."""
+        if keypoints is None:
+            return None
+
         result = keypoints.copy()
         for i in range(2, len(result), 3):
             result[i] = 0
@@ -386,6 +392,9 @@ class PoseKeypointMoverNode:
         Returns:
             Modified keypoints array
         """
+        if keypoints is None:
+            return None
+
         result = keypoints.copy()
         for i in range(0, len(result), 3):
             keypoint_idx = i // 3
@@ -399,6 +408,9 @@ class PoseKeypointMoverNode:
 
     def _apply_offset_all(self, keypoints, x_offset, y_offset):
         """Apply x/y offset to all keypoints with confidence > 0."""
+        if keypoints is None:
+            return None
+
         result = keypoints.copy()
         for i in range(0, len(result), 3):
             if result[i + 2] > 0:  # Only if confidence > 0
