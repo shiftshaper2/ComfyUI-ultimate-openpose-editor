@@ -78,7 +78,7 @@ class AppendageEditorNode:
                     "left_upper_leg", "left_lower_leg", "left_full_leg",
                     "right_upper_leg", "right_lower_leg", "right_full_leg",
                     "left_hand", "right_hand", "left_foot", "right_foot",
-                    "torso", "shoulders"
+                    "torso", "shoulders", "head"
                 ], {
                     "default": "left_upper_arm"
                 }),
@@ -286,6 +286,9 @@ class AppendageEditorNode:
             # Torso and Shoulders - COCO format
             "torso": ([1, 2, 5, 8, 11], 1),         # Neck, RShoulder, LShoulder, RHip, LHip (pivot: neck)
             "shoulders": ([2, 5], 1),               # RShoulder, LShoulder (pivot: neck)
+
+            # Head - COCO format
+            "head": ([0, 14, 15, 16, 17], 1),       # Nose, REye, LEye, REar, LEar (pivot: neck)
         }
 
         result = appendage_map.get(appendage_type, ([], None))
