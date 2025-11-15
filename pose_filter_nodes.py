@@ -166,23 +166,27 @@ class PoseKeypointFilterNode:
                     )
 
                 # Filter hands and face based on selection
-                if not POSE_SELECTION.get('include_left_hand', True) != invert_selection:
-                    if 'hand_left_keypoints_2d' in person:
-                        person['hand_left_keypoints_2d'] = self._zero_all_keypoints(
-                            person['hand_left_keypoints_2d']
-                        )
+                # Logic: should_zero = (include XOR invert_selection)
+                include_left_hand = POSE_SELECTION.get('include_left_hand', True)
+                should_zero_left_hand = include_left_hand == invert_selection  # XOR logic
+                if should_zero_left_hand and 'hand_left_keypoints_2d' in person:
+                    person['hand_left_keypoints_2d'] = self._zero_all_keypoints(
+                        person['hand_left_keypoints_2d']
+                    )
 
-                if not POSE_SELECTION.get('include_right_hand', True) != invert_selection:
-                    if 'hand_right_keypoints_2d' in person:
-                        person['hand_right_keypoints_2d'] = self._zero_all_keypoints(
-                            person['hand_right_keypoints_2d']
-                        )
+                include_right_hand = POSE_SELECTION.get('include_right_hand', True)
+                should_zero_right_hand = include_right_hand == invert_selection
+                if should_zero_right_hand and 'hand_right_keypoints_2d' in person:
+                    person['hand_right_keypoints_2d'] = self._zero_all_keypoints(
+                        person['hand_right_keypoints_2d']
+                    )
 
-                if not POSE_SELECTION.get('include_face', True) != invert_selection:
-                    if 'face_keypoints_2d' in person:
-                        person['face_keypoints_2d'] = self._zero_all_keypoints(
-                            person['face_keypoints_2d']
-                        )
+                include_face = POSE_SELECTION.get('include_face', True)
+                should_zero_face = include_face == invert_selection
+                if should_zero_face and 'face_keypoints_2d' in person:
+                    person['face_keypoints_2d'] = self._zero_all_keypoints(
+                        person['face_keypoints_2d']
+                    )
 
         return (pose_data,)
 
